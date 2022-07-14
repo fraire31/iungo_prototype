@@ -239,6 +239,31 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               decoration:
                   kMainTextInputDecoration.copyWith(labelText: 'apellido'),
             ),
+            BlocConsumer<UserBloc, UserState>(
+              listener: (context, state) {
+                if (state is UserSuccess) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text(
+                      'Sus han sido guardados.',
+                      style: TextStyle(color: Colors.green),
+                    ),
+                    duration: Duration(seconds: 3),
+                  ));
+                }
+              },
+              builder: (context, userState) {
+                if (userState is UserLoading) {
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: LinearProgressIndicator(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  );
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
             Directionality(
               textDirection: TextDirection.rtl,
               child: Padding(

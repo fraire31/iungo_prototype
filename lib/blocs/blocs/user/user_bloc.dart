@@ -43,8 +43,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           profileImageUrl: url,
         );
 
-        await _userRepo.updateUserProfileData(data: user);
-        emit(UserLoaded(user: user));
+        await _userRepo.updateUserProfileData(data: user).then((_) {
+          emit(UserSuccess());
+          emit(UserLoaded(user: user));
+        });
       }
     });
   }

@@ -8,6 +8,11 @@ class UserLoading extends UserState {
   List<Object?> get props => [];
 }
 
+class UserSuccess extends UserState {
+  @override
+  List<Object?> get props => [];
+}
+
 class UserLoaded extends UserState {
   final IungoUser user;
 

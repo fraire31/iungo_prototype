@@ -75,11 +75,14 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
           child: Column(
             children: [
               const Text('Debes verificar tu correo electrónico.'),
-              const Text(
-                  'Revisa tu correo electrónico para hacer clic en el link para verificar tu cuenta.'),
+              const Padding(
+                padding: EdgeInsets.only(top: 8.0),
+                child: Text(
+                    'Revisa tu correo electrónico para hacer clic en el link para verificar tu cuenta.'),
+              ),
               ElevatedButton.icon(
                 onPressed: _canResendEmail ? _sendVerificationEmail : null,
-                label: const Text('Reenviar Email'),
+                label: const Text('Re-enviar Email'),
                 icon: const Icon(Icons.email),
               ),
               TextButton(

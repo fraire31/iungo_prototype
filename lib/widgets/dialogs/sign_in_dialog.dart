@@ -23,8 +23,9 @@ class _SignInDialogState extends State<SignInDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Correro Electronico ya existe'),
+      title: const Text('This email already exists'),
       content: Column(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -41,7 +42,7 @@ class _SignInDialogState extends State<SignInDialog> {
           if (widget.accountType == 'password') ...[
             TextField(
               decoration: const InputDecoration(
-                labelText: 'contraseña',
+                labelText: 'password',
                 border: OutlineInputBorder(),
               ),
               obscureText: true,

@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iungo_prototype/providers/auth.dart';
 import 'package:provider/provider.dart';
 
 import './email_login_screen.dart';
+import '../../blocs/blocs/user/user_bloc.dart';
 import '../../constants.dart';
 import '../../enums.dart' as enums;
 import '../../exceptions/custom_exception.dart';
@@ -125,6 +127,7 @@ class _LoginOptionsScreenState extends State<LoginOptionsScreen> {
 
     if (!_auth.isAuth) return;
     await _userProvider.fetchUserInfo();
+    context.read<UserBloc>().add(FetchUserData());
 
     if (_signInOption == enums.signInOptions.google ||
         _signInOption == enums.signInOptions.facebook) {
